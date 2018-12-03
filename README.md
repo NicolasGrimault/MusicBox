@@ -4,7 +4,6 @@ Using SQLite database
 
 ## How to Install
 ```sh
-$ git clone https://github.com/lcarlesso/node-js-sqlite.git
 $ cd node-js-sqlite
 $ npm install 
 $ npm run dev
@@ -25,9 +24,7 @@ Sending a JSON body:
 ```javascript
 {
 	"name": "ExampleMusicName",
-	"description": "Example music description",
-	"price": 2.00,
-	"currency": "EUR" 
+	"musicurl": "Example music description"
 }
 ```
 or an array of musics:
@@ -49,9 +46,7 @@ Sending a JSON body: **ID is the only MANDATORY**
 {
 	"id": "1",
 	"name": "ExampleMusicName",
-	"description": "Example music description",
-	"price": 2.00,
-	"currency": "EUR" 
+	"musicurl": "Example music description"
 }
 ```
 or an array of musics:
@@ -73,9 +68,7 @@ Sending a JSON body: **ID is the only MANDATORY**
 {
 	"id": "1",
 	"name": "ExampleMusicName",
-	"description": "Example music description",
-	"price": 2.00,
-	"currency": "EUR" 
+	"musicurl": "Example music description"
 }
 ```
 or an array of musics:
@@ -106,7 +99,6 @@ ______
 http://localhost:4300/api/music/$attribute/$name
 ```
 example: 
-- http://localhost:4300/api/music/price/24
 - http://localhost:4300/api/music/name/Suntone
 $attribute = ['name', 'price', 'currency', 'description']
 (this is not checked values, wrong parameters will return a DB error.)
@@ -124,22 +116,6 @@ $attribute = ['name', 'price', 'currency', 'description']
 (this is not checked values, wrong parameters will return a DB error)
 ____
 
-* **Load musics sorting ASC or DESC by any attribute:**
-```
-http://localhost:4300/api/music/sort/$direction/$attribute
-```
-example: 
-- http://localhost:4300/api/music/sort/asc/price
-- http://localhost:4300/api/music/sort/desc/price
-
-$attribute = ['name', 'price', 'currency', 'description']*
-$direction [ASC or DESC]C]*
-(the direction is checked and when wrong will return a 401 business error)
-_____
-
-
-## SQLite database
-The database is already populated with 30 random values from https://www.mockaroo.com/
 
 ### Node version
 The Node version used was 6.9.3
