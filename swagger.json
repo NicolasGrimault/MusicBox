@@ -1,0 +1,188 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Yet Another Node.js Blogg Application API",
+    "description": "Yet Another Node.js Blogg Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:4300",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Musics",
+      "description": "API for music"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/music": {
+      "post": {
+        "tags": [
+          "Musics"
+        ],
+        "description": "Create new music in system",
+        "parameters": [
+          {
+            "name": "music",
+            "in": "body",
+            "description": "Music that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Music"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New music is created",
+            "schema": {
+              "$ref": "#/definitions/Music"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update music with give ID",
+        "tags": [
+          "Musics"
+        ],
+        "parameters": [
+          {
+            "name": "music",
+            "in": "body",
+            "description": "Music with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/MusicId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Music is updated",
+            "schema": {
+              "$ref": "#/definitions/MusicId"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete music with given ID",
+        "tags": [
+          "Musics"
+        ],
+        "parameters": [
+          {
+            "name": "music",
+            "in": "body",
+            "description": "Music with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/MusicId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Music is deleted",
+            "schema": {
+              "$ref": "#/definitions/MusicId"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Musics"
+        ],
+        "summary": "Get all musics in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Musics"
+            }
+          }
+        }
+      }
+    },
+    "/music/id/{musicId}": {
+      "parameters": [
+        {
+          "name": "musicId",
+          "in": "path",
+          "required": true,
+          "description": "ID of music that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Musics"
+        ],
+        "summary": "Get music with given ID",
+        "responses": {
+          "200": {
+            "description": "Music is found",
+            "schema": {
+              "$ref": "#/definitions/Music"
+            }
+          }
+        }
+      }     
+    }
+  },
+  "definitions": {
+    "Music": {
+      "required": [
+        "name",
+        "musicurl"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "musicurl": {
+          "type": "string"
+        }
+      }
+    },
+    "MusicPutOrDeleteModel": {
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "musicurl": {
+          "type": "string"
+        }
+      }
+    },
+    "Musics": {
+      "type": "array",
+      "$ref": "#/definitions/Music"
+    }
+  }
+}
