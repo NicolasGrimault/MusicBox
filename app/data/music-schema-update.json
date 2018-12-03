@@ -1,0 +1,21 @@
+{
+    "title": "Music",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "musicurl": {
+            "type": "string",
+            "maxLength": 540
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "musicurl"
+    ]
+}

@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS Musics
+( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    name TEXT NOT NULL, 
+    musicurl TEXT NOT NULL  
+);
